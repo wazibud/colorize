@@ -81,6 +81,7 @@ p {
     flex-basis: 70%;
     min-width: 100px;
     min-height: 100px;
+    margin-left: 5px;
     margin-right: 5px;
 }
 
@@ -177,6 +178,7 @@ nav {
 /* Set additional styling options for the columns */
 .column {
     float: left;
+    padding-top: 10px;
 }
 
 /* Set width length for the left, right and middle columns */
@@ -190,6 +192,7 @@ nav {
 
 .right {
     width: 50%;
+    padding-left: 15px;
 }
 
 .row:after {
@@ -217,10 +220,35 @@ nav {
     text-decoration: none;
     background-color: #8ebaf3;
     color: black;
+    border-bottom: 1px solid grey;
 }
 
     /* Change the link color on hover */
     #treeView li a:hover {
         background-color: #555;
         color: white;
+        border-bottom: 1px solid white;
+    }
+
+
+/* Style inputs */
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #0b8ef1;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+    input[type=submit]:hover {
+        background-color: #8ebaf3;
     }
