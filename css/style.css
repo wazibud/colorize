@@ -37,7 +37,7 @@ a {
     }
 
 p {
-    color: #fff;
+    color: #000;
     font-size: 15px
 }
 
@@ -77,19 +77,13 @@ p {
     margin-right: 5px;
 }
 
-.column-2 {
-    flex-basis: 50%;
-    min-width: 100px;
-    min-height: 100px;
-    margin-right: 5px;
-}
-
 .column-3 {
     flex-basis: 70%;
     min-width: 100px;
     min-height: 100px;
     margin-right: 5px;
 }
+
 
 div.gallery {
     margin: 15px;
@@ -133,6 +127,8 @@ div.desc {
     background: #8ebaf3;
 }
 
+
+
 /*Responsive Navigation*/
 
 nav {
@@ -174,38 +170,57 @@ nav {
             }
 }
 
-@media only screen and (max-width:600px) {
-    .row {
-        text-align: center
-    }
 
-    .column-1, .column-3 {
-        flex-basis: 100%
-    }
+{
+    box-sizing: border-box;
+}
+/* Set additional styling options for the columns */
+.column {
+    float: left;
 }
 
-@keyframes color {
-    0% {
-        background: #fff44f
-    }
-
-    20% {
-        background: #ff6
-    }
-
-    40% {
-        background: #fcf75e
-    }
-
-    60% {
-        background: #fada5e
-    }
-
-    80% {
-        background: #fefe33
-    }
-
-    100% {
-        background: #fbec5d
-    }
+/* Set width length for the left, right and middle columns */
+.left {
+    width: 20%;
 }
+
+.middle {
+    width: 30%;
+}
+
+.right {
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#previewSection img {
+    width: 300px;
+}
+
+#treeView ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #8ebaf3;
+}
+
+#treeView li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #8ebaf3;
+    color: black;
+}
+
+    /* Change the link color on hover */
+    #treeView li a:hover {
+        background-color: #555;
+        color: white;
+    }

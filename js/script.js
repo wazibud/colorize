@@ -2,43 +2,25 @@ var colorize = {
     logo: function () {
         window.open("index.html", "_self");
     },
-    xml: '<obj>'
-        + '<album files="true"><name>Album 1</name>'
-        //+ '<image>https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F61688aa1d4a8658c3f4d8640%2FAntonio-Juliano%2F0x0.jpg%3Ffit%3Dscale</image>'
-        + '<image>Image 1</image>'
-        + '<image>Image 2</image>'
-        + '</album>'
-        + '<album files="true"><name>Album 2</name>'
-        + '<image>Image 1</image>'
-        + '<image>Image 2</image>'
-        + '<image>Image 3</image>'
-        + '</album>'
-        + '<album empty="true"><name>Album 3</name></album>'
-        + '</obj>'
+    menu: '<menu area="left">'
+        + '<option>Color</option>'
+        + '<option>Enhance</option>'
+        + '<option>Toonify</option>'
+        + '</menu>'
     , getXMLDoc: function (xml) {
         return new DOMParser().parseFromString(xml, 'text/xml');
     },
     nodeMarkup: function (node) {
         //debugger;
         if (node.childNodes.length) {
-            var list = '', header = '';
+            var list = '';
             for (var index = 0; index < node.childNodes.length; index++) {
-                //debugger;
-                if (node.childNodes[index].tagName == 'name') {
-                    header = node.childNodes[index].textContent;
+                if (node.childNodes[index].tagName == 'option') {
+                    list += '<li><a title="' + node.childNodes[index].textContent + ' images" href="account.html?option=' + node.childNodes[index].textContent.toLowerCase() + '"> ' + node.childNodes[index].textContent + '</li>';
                 }
-                else {
-                    list += colorize.nodeMarkup(node.childNodes[index]);
-                };
-            };
-            return node.hasAttribute('files')
-                ? '<li>' + header + '<ul>' + list + '</ul></li>'
-                : node.hasAttribute('empty')
-                    ? '<li>' + header + '</li>'
-                    : list + '123';
-        } else {
-            return '<li>' + node.textContent + '</li>';
-        };
+            }
+            return list;
+        }
     },
     hideConentContainer: function (hide) {
         hide ? document.getElementById('contentContainer').style.display = 'none' : document.getElementById('contentContainer').style.display = 'block';
@@ -68,7 +50,7 @@ var colorize = {
 };
 
 if (document.getElementById('treeView') != null) {
-    document.getElementById('treeView').innerHTML = colorize.nodeMarkup(colorize.getXMLDoc(colorize.xml).documentElement);
+    document.getElementById('treeView').innerHTML = colorize.nodeMarkup(colorize.getXMLDoc(colorize.menu).documentElement);
 }
 
 
