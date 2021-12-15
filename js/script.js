@@ -77,7 +77,6 @@ function readImage(file) {
 }
 
 
-// Example posting file picker input image (Browser only):
 deepai.setApiKey('4f968f66-303c-4a33-b113-b8e229e3eeaf');
 
 async function convertImage() {
@@ -95,14 +94,12 @@ async function convertImage() {
             });
             break;
         default:
-        // code block
         case 'toonify':
             resp = await deepai.callStandardApi("toonify", {
                 image: document.getElementById('fileInput'),
             });
             break;
     }
-    console.log(resp);
     document.getElementById("convertedImagePreview").src = resp.output_url;
 }
 
